@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" (click)="login()" aria-label="Example icon-button with share icon">
+    <mat-icon>person</mat-icon>
+
+  </button>
+  <div *ngIf="this.storage.user">
+
+    {{this.storage.user.name}}
+
+
+
+  </div>
+
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" (click)="products()" aria-label="Example icon-button with heart icon">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+
+</mat-toolbar>

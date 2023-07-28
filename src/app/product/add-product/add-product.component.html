@@ -1,0 +1,35 @@
+<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+  <div class="form-group">
+    <label for="name">barCode</label>
+    <input type="text" class="form-control" id="name"
+           required
+           [(ngModel)]="model.barcode" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="alterEgo">Name</label>
+    <input type="text"  class="form-control" id="alterEgo"
+           [(ngModel)]="model.name" name="alterEgo">
+  </div>
+  <div class="form-group">
+    <label for="alterEgo">Descrip</label>
+    <input type="text"  class="form-control" id="alterEgo"
+           [(ngModel)]="model.description" name="alterEgo">
+  </div>
+  <div class="form-group">
+    <label for="alterEgo">Type</label>
+    <input type="text"  class="form-control" id="alterEgo"
+           [(ngModel)]="model.type_id" name="alterEgo">
+  </div>
+  <div class="form-group">
+    <label for="alterEgo">Price</label>
+    <input type="text"  class="form-control" id="alterEgo"
+           [(ngModel)]="model.price" name="alterEgo">
+  </div>
+  <div class="form-group">
+    <label for="alterEgo">Qtd</label>
+    <input type="text"  class="form-control" id="alterEgo"
+           [(ngModel)]="model.stock_quantity" name="alterEgo">
+  </div>
+  <button type="submit" class="btn btn-success" >Submit</button>
+  </form>

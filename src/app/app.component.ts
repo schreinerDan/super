@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from './shared/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super';
+  constructor(public storage: StorageService){}
 }

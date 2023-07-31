@@ -1,7 +1,16 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <app-layout>
   <mat-sidenav-container>
     <mat-sidenav-content>
       <app-header></app-header>
+      <div *ngIf="storage.message" class="d-flex justify-content-center">
+      <div (click)="storage.message=''"  class="p-3 text-success-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+       <h3> {{storage.message}}</h3>
+      </div>
+      </div>
+
+
+
 
         <router-outlet></router-outlet>
 
@@ -10,3 +19,4 @@
 
 
 </app-layout>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

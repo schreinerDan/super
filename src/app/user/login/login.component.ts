@@ -10,8 +10,6 @@ import { UserControllerService } from 'src/app/controllers/user-controller.servi
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
 
   model = new UserLogin( '', "");
 

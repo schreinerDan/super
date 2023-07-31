@@ -1,0 +1,54 @@
+<div class="list">
+  <mat-card><form>
+      Search
+      <input type="search" (ngModelChange)="searchProducts(key.value)" #key="ngModel" ngModel name="key">
+
+    </form>
+
+
+
+        <button mat-stroked-button (click)="addProduct()">Limpar</button>
+
+
+  </mat-card>
+
+
+
+
+
+  <table mat-table [dataSource]="productTypes" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name </th>
+      <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="percentage">
+      <th mat-header-cell *matHeaderCellDef>Tax Percentage </th>
+      <td mat-cell *matCellDef="let product"> {{product.percentage}} </td>
+    </ng-container>
+
+
+   <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let product">
+      <button  class="action-link" (click)="productTypeController.removeProductType(product.id)" >Del</button>
+
+    </td>
+  </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  </div>

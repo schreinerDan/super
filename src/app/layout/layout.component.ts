@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from '../shared/storage.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
+
+  constructor(public storage: StorageService){
+
+  }
 
 }

@@ -1,35 +1,94 @@
+
+
+
+<div class="container">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add Products</mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
 <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-  <div class="form-group">
-    <label for="name">barCode</label>
-    <input type="text" class="form-control" id="name"
-           required
-           [(ngModel)]="model.barcode" name="name">
-  </div>
+
+
+  <!-- <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p> Selected food: {{selectedValue}} </p> -->
 
   <div class="form-group">
-    <label for="alterEgo">Name</label>
-    <input type="text"  class="form-control" id="alterEgo"
-           [(ngModel)]="model.name" name="alterEgo">
-  </div>
-  <div class="form-group">
-    <label for="alterEgo">Descrip</label>
-    <input type="text"  class="form-control" id="alterEgo"
-           [(ngModel)]="model.description" name="alterEgo">
-  </div>
-  <div class="form-group">
-    <label for="alterEgo">Type</label>
-    <input type="text"  class="form-control" id="alterEgo"
-           [(ngModel)]="model.type_id" name="alterEgo">
-  </div>
-  <div class="form-group">
-    <label for="alterEgo">Price</label>
-    <input type="text"  class="form-control" id="alterEgo"
-           [(ngModel)]="model.price" name="alterEgo">
-  </div>
-  <div class="form-group">
-    <label for="alterEgo">Qtd</label>
-    <input type="text"  class="form-control" id="alterEgo"
-           [(ngModel)]="model.stock_quantity" name="alterEgo">
-  </div>
-  <button type="submit" class="btn btn-success" >Submit</button>
-  </form>
+    <label for="barcode">barCode</label>
+    <input type="text" class="form-control" id="barcode"
+           required
+           [(ngModel)]="model.barcode" name="barcode">
+
+
+
+    <label for="namename">Name</label>
+    <input type="text"  class="form-control" id="namename"
+           [(ngModel)]="model.name" name="namename">
+
+
+    <label for="description">Descrip</label>
+    <input type="text"  class="form-control" id="description"
+           [(ngModel)]="model.description" name="description">
+
+           <div *ngIf="productTypes.length>0">
+            <label for="type_id">Tipo</label>
+            <mat-form-field>
+
+            <mat-select   [(ngModel)]="model.type_id"  name="type_id">
+                <mat-option *ngFor="let productType of productTypes" [value]="productType.id">
+                {{productType.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+
+    <label for="price">Price</label>
+    <input type="text"  class="form-control" id="price"
+           [(ngModel)]="model.price" name="price">
+
+
+    <label for="stock_quantity">Qtd</label>
+    <input type="text"  class="form-control" id="stock_quantity"
+           [(ngModel)]="model.stock_quantity" name="stock_quantity">
+
+
+<input type="file" class="file-input"
+(change)="onFileSelected($event)" #fileUpload  [hidden]="true"/>
+
+<div class="file-upload">
+
+{{model.image || "No file uploaded yet."}}
+
+<button mat-mini-fab color="primary" type="button" class="upload-btn"
+(click)="fileUpload.click()" >
+ <mat-icon>attach_file</mat-icon>
+</button>
+ </div>
+
+
+
+
+  <mat-card-actions align="start">
+    <button type="submit" class="btn btn-success" >Submit</button>
+
+
+  </mat-card-actions>
+
+</div>
+</form>
+</mat-card-content>
+
+
+</mat-card>
+</div>

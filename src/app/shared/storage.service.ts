@@ -11,7 +11,7 @@ export class StorageService {
   public user:User=new User();
   public token:string="";
   public productsList:ProductModel[]=[];
-
   public shoppingCart:ProductAddedCart[]=[];
+  public message:string="";
 
 }

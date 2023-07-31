@@ -16,6 +16,14 @@ export class User {
   public token: string="";
 
 
-  constructor(
-  ) {  }
+  constructor(data?:any) {
+    if(data!=null){
+      Object.assign(this, data);
+
+      }
+
+    }
+    serialize():any{
+      return JSON.stringify(this);
+    }
 }

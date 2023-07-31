@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
@@ -23,9 +25,15 @@ import { UserService } from './services/user.service';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ListProductsComponent } from './product/list-products/list-products.component';
 import { ProductCardComponent } from './product/components/product-card/product-card.component';
+import { IndexProductComponent } from './product/index-product/index-product.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatOptionModule } from '@angular/material/core';
+import { AddProductTypeComponent } from './product-type/add-product-type/add-product-type.component';
+import { IndexProductTypeComponent } from './product-type/index-product-type/index-product-type.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
-
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -36,7 +44,12 @@ import { ProductCardComponent } from './product/components/product-card/product-
     LoginComponent,
     AddProductComponent,
     ListProductsComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    IndexProductComponent,
+    AddProductTypeComponent,
+    IndexProductTypeComponent,
+
+
 
 
 
@@ -53,7 +66,13 @@ import { ProductCardComponent } from './product/components/product-card/product-
     MatInputModule,
     FormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
+
 
 
   ],

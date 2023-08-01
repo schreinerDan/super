@@ -1,9 +1,11 @@
+import { AddProductComponent } from './../product/add-product/add-product.component';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../shared/storage.service';
 import { ProductsService } from '../services/products.service';
 import { Product } from '../models/product';
+import { ProductAddedCart } from '../models/product-added-cart';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,11 @@ export class ProductControllerService {
   getAllProducts(): void{
     this.productService.getAll().subscribe((response)=>{
       this.storage.productsList=response;
+    })
+  }
+  getProductById(id:any): void{
+    this.productService.getById(id).subscribe((response)=>{
+      // this.storage.productsList=response;
     })
   }
 

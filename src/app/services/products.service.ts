@@ -1,4 +1,3 @@
-import { ProductModel} from '../models/product-model';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,6 +16,9 @@ export class ProductsService {
     return this.http.get<any[]>(environment.api+ 'products/get');
   }
 
+  getById(id:any): Observable<Product> {
+    return this.http.get<Product>(environment.api+ 'products/get/'+id);
+  }
    create(data:any): Observable<any> {
     return this.http.post<any>(environment.api+ 'products/add', JSON.stringify(data));
   }

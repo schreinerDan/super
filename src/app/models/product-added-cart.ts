@@ -1,10 +1,11 @@
+import { Product } from './product';
 import { ProductModel } from './product-model';
 export class ProductAddedCart {
     index:number=-1;
-    product:ProductModel=new ProductModel();
+    product:Product=new Product();
     qtd:number=0;
 
-    constructor(product_:ProductModel,qtd_:number){
+    constructor(product_:Product,qtd_:number){
       this.product=product_;
       this.qtd=qtd_;
     }

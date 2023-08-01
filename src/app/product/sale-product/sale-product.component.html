@@ -1,0 +1,82 @@
+    <div  class="row">
+      <div class="col">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> product </th>
+        <td mat-cell *matCellDef="let element"> {{element.product.name}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> price </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+ <!-- Symbol Column -->
+ <ng-container matColumnDef="total">
+  <th mat-header-cell *matHeaderCellDef> total </th>
+  <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+</ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+      <div class="row">
+        retter
+        </div>
+
+  </div>
+    <div class="col">
+
+
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+
+
+      <div class="row">
+        <div class="col">
+          <label for="item"> Item</label>
+          <input type="text" class="form-control" id="item" [(ngModel)]="saleForm.item"
+            (change)="onProductChange(saleForm.item)" name="item">
+        </div>
+        <div class="row">
+          <label for="productName"> Name</label>
+          <input type="text" disabled class="form-control" id="productName" [(ngModel)]="saleForm.product.name"
+            name="productName">
+
+        </div>
+        <div class="col">
+          <label for="price"> Price</label>
+          <input type="text" disabled class="form-control" id="price" [(ngModel)]="saleForm.price" name="price">
+        </div>
+        <div class="col">
+          <label for="quantity"> quantity</label>
+          <input type="text" (change)="onQuantityChange(saleForm.quantity)" class="form-control" id="quantity"
+            [(ngModel)]="saleForm.quantity" name="quantity">
+
+        </div>
+        <div class="col">
+          <label for="total"> total</label>
+          <input type="text" disabled class="form-control" id="total" [(ngModel)]="saleForm.total" name="total">
+
+        </div>
+        <div class="row">
+          <button type="submit" class="btn btn-success">Add Product</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  </div>

@@ -1,6 +1,7 @@
 import { ProductControllerService } from './../../../controllers/product-controller.service';
 import { ProductAddedCart } from '../../../models/product-added-cart';
 import { Component, Input, OnInit } from '@angular/core';
+import { ShoppingCartControllersService } from 'src/app/controllers/shopping-cart-controllers.service';
 
 @Component({
   selector: 'app-product-card',
@@ -12,21 +13,21 @@ export class ProductCardComponent implements OnInit {
   quantity: number = 1;
   itemIndex: number = -1;
   itemAdded: boolean = false;
-  constructor(public productActionService: ProductControllerService) {}
+  constructor(public shoppingCartController: ShoppingCartControllersService) {}
 
   ngOnInit(): void {}
   addItemCart(productItem: any) {
-    let p_: ProductAddedCart = new ProductAddedCart(productItem, this.quantity);
-    // this.itemIndex = this.productActionService.addProductCart(p_);
+    let product: ProductAddedCart = new ProductAddedCart(productItem, this.quantity);
+
     this.itemAdded = true;
+    this.itemIndex=this.shoppingCartController.AddProductToShoppingCart(product);
   }
 
   removeItemCart() {
-    // this.itemIndex = this.productActionService.removeProductCart(
-      // this.itemIndex
-    // );
+
     this.itemAdded = false;
     this.quantity = 1;
+    this.shoppingCartController.removeProductShoppingCart( this.itemIndex);
   }
 
   clickIncreaseItem(productItem: any): void {
@@ -34,7 +35,7 @@ export class ProductCardComponent implements OnInit {
 
     if (this.itemAdded) {
       this.quantity =
-        this.productActionService.storage.shoppingCart[
+        this.shoppingCartController.storage.shoppingCart[
           this.itemIndex
         ].qtdIncrement();
     }
@@ -45,7 +46,7 @@ export class ProductCardComponent implements OnInit {
       this.quantity--;
       if (this.itemAdded) {
         this.quantity =
-          this.productActionService.storage.shoppingCart[
+          this.shoppingCartController.storage.shoppingCart[
             this.itemIndex
           ].qtdDecrement();
       }

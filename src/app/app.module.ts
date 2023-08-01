@@ -1,3 +1,4 @@
+import { SaleProductComponent } from './product/sale-product/sale-product.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './services/products.service';
@@ -11,6 +12,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +35,9 @@ import { IndexProductTypeComponent } from './product-type/index-product-type/ind
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ShoppingCartListComponent } from './shopping-cart/shopping-cart-list/shopping-cart-list.component';
+
 
 
 @NgModule({
@@ -48,6 +52,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     IndexProductComponent,
     AddProductTypeComponent,
     IndexProductTypeComponent,
+    ShoppingCartListComponent,
+    SaleProductComponent
+
 
 
 
@@ -71,7 +78,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     MatOptionModule,
     MatSelectModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule
 
 
 

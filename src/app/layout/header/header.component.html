@@ -15,9 +15,10 @@
   <span class="example-spacer"></span>
   <button mat-icon-button class="example-icon favorite-icon" (click)="products()" aria-label="Example icon-button with heart icon">
     <mat-icon>search</mat-icon>
-  </button>e
+  </button>
   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>shopping_cart</mat-icon>
+    {{storage.shoppingCart.length}}
   </button>
 
 </mat-toolbar>

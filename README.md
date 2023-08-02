@@ -33,8 +33,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   2 - Install Nodejs
       https://nodejs.org/en/download/current/
   
-  3 - Install Mysql
-      https://dev.mysql.com/downloads/mysql/
+  3 - Install Postgres
+      
 
   4 - Install Git
 

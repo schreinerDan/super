@@ -20,6 +20,8 @@ export class ShoppingCartControllersService {
   }
   removeProductShoppingCart(index:number){
     this.storage.shoppingCart.splice(index, 1);
+    this.cookieService.delete('shoppingCart');
+    this.cookieService.set('shoppingCart', JSON.stringify(this.storage.shoppingCart));
   }
 
 }

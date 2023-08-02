@@ -14,6 +14,9 @@ export class ProductTypeService {
   getAll(): Observable<any[]> {
     return this.http.get<any[]>(environment.api+ 'product-types/get');
   }
+  getById(id:any): Observable<ProductType> {
+    return this.http.get<ProductType>(environment.api+ 'product-types/get/'+id);
+  }
 
    create(data:any): Observable<any> {
     return this.http.post<any>(environment.api+ 'product-types/add', JSON.stringify(data));

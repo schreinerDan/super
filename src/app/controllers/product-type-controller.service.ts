@@ -19,7 +19,9 @@ export class ProductTypeControllerService {
   getAllProductTypes():Observable<ProductType[]>{
     return this.productTypeService.getAll();
   }
-
+  getProductTypeById(id:any):Observable<ProductType>{
+    return this.productTypeService.getById(id);
+  }
 
 
   addProductType(data:any): void{

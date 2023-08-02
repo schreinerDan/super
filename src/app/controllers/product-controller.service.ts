@@ -19,10 +19,11 @@ export class ProductControllerService {
       this.storage.productsList=response;
     })
   }
-  getProductById(id:any): void{
+  getProductById(id:any): any{
     this.productService.getById(id).subscribe((response)=>{
-      // this.storage.productsList=response;
-    })
+      return response;
+    });
+    return null;
   }
 
   findAllProducts():Observable<Product[]>{

@@ -1,14 +1,9 @@
 <div class="container">
   <mat-card>
-    <form>
-      Search
-      <input type="search" (ngModelChange)="searchProducts(key.value)" #key="ngModel" ngModel name="key">
-
-    </form>
 
 
 
-    <button mat-stroked-button (click)="addProduct()">Limpar</button>
+    <button mat-stroked-button (click)="addSale()">Add new Sale</button>
 
 
   </mat-card>
@@ -71,7 +66,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let product">
-        <!-- <button  class="action-link" (click)="productController.removeProduct(product.id)" >Del</button> -->
+
 
       </td>
     </ng-container>

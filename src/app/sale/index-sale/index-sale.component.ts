@@ -26,34 +26,13 @@ export class IndexSaleComponent {
       this.sales=result;
     });
   }
-  public addProduct(){
+  public addSale(){
     this.router.navigate(['/sale/add']);
   }
 
 
-  public searchProducts(key: string): void{
-    // console.log(key);
-    // const result: Sale[] =[];
-    // for(const sale of this.sales){
-    //   if(product.name.toLowerCase().indexOf(key.toLowerCase())!== -1 ||
-    //     product.description.toLowerCase().indexOf(key.toLowerCase())!== -1 ){
 
-    //     result.push(product);
 
-    //   }
-    // }
 
-    // this.products = result;
-
-    // if (result.length ===0 || !key)
-    // {
-    //     this.getData();
-    // }
-
-  }
-
-  public removeProduct(id: string){
-    // this.saleController.removeSale(id)
-  }
 }
 

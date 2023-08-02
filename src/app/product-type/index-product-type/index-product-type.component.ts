@@ -31,7 +31,7 @@ export class IndexProductTypeComponent {
       this.dataSources= this.productTypes;
     });
   }
-  public addProduct(){
+  public addProductType(){
     this.router.navigate(['/product-type/add']);
   }
 

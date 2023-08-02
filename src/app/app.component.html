@@ -1,22 +1,54 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <app-layout>
-  <mat-sidenav-container>
-    <mat-sidenav-content>
-      <app-header></app-header>
-      <div *ngIf="storage.message" class="d-flex justify-content-center">
-      <div (click)="storage.message=''"  class="p-3 text-success-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-       <h3> {{storage.message}}</h3>
-      </div>
-      </div>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" (click)="drawer.toggle()"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>menu</mat-icon>
+
+    </button>
 
 
 
 
-        <router-outlet></router-outlet>
 
-    </mat-sidenav-content>
-   </mat-sidenav-container>
+  </mat-toolbar>
+
+  <mat-drawer-container class="example-container" >
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <mat-nav-list role="navigation">
+        <mat-list-item role="listitem" [routerLink]="['/login']"
+          routerLinkActive="router-link-active">Login</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/product/index']" routerLinkActive="router-link-active">List
+          Products</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/product/add']" routerLinkActive="router-link-active">Add
+          Products</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/product-type/index']" routerLinkActive="router-link-active">List
+          Product Type</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/product-type/add']" routerLinkActive="router-link-active">Add
+          Product Type</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/sale/add']"
+          routerLinkActive="router-link-active">Sale</mat-list-item>
+        <mat-list-item role="listitem" [routerLink]="['/sale/index']"
+          routerLinkActive="router-link-active">Sale</mat-list-item>
+      </mat-nav-list>
+
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-container>
+
+
+
+
+
 
 
 </app-layout>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

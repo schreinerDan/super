@@ -1,111 +1,111 @@
 <div class="container">
-  <h1>VENDA</h1>
+  <h1>SALE</h1>
   <div class="row">
 
     <div class="col-md-4">
 
       <mat-card>
         <mat-card-content>
-      <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
-
-
-
-        <div class="row">
-          <div class="col">
-            <label for="item"> Item</label>
-            <input type="text" class="form-control" id="item" [(ngModel)]="activeSaleItem.id"
-              (change)="onProductChange(activeSaleItem.id)" name="item">
-          </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="productName"> Name</label>
-              <input type="text" disabled class="form-control" id="productName" [(ngModel)]="activeSaleItem.product.name"
-                name="productName">
+          <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            <div class="row">
+              <div class="col">
+                <label for="item"> Item</label>
+                <input type="text" class="form-control" #item id="item" [(ngModel)]="activeSaleItem.id"
+                  (change)="onProductChange(activeSaleItem.id)" name="item">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="price"> Price</label>
-              <input type="text" disabled class="form-control" id="price" [(ngModel)]="activeSaleItem.price " name="price">
+            <div class="row">
+              <div class="col">
+                <label for="productName"> Name</label>
+                <input type="text" disabled class="form-control" id="productName"
+                  [(ngModel)]="activeSaleItem.product.name" name="productName">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="quantity"> quantity</label>
-              <input type="text" (change)="onQuantityChange(activeSaleItem.quantity)" class="form-control" id="quantity"
-                [(ngModel)]="activeSaleItem.quantity" name="quantity">
-
+            <div class="row">
+              <div class="col">
+                <label for="price"> Price</label>
+                <input type="text" disabled class="form-control" id="price" [(ngModel)]="activeSaleItem.price "
+                  name="price">
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <label for="total"> total</label>
-              <input type="text" disabled class="form-control" id="total" [(ngModel)]="activeSaleItem.totalPrice" name="total">
+            <div class="row">
+              <div class="col">
+                <label for="quantity"> quantity</label>
+                <input type="text" (change)="onQuantityChange(activeSaleItem.quantity)" class="form-control"
+                  id="quantity" [(ngModel)]="activeSaleItem.quantity" name="quantity">
 
+              </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="col">
+                <label for="total"> total</label>
+                <input type="text" disabled class="form-control" id="total" [(ngModel)]="activeSaleItem.totalPrice"
+                  name="total">
 
-        <div class="row">
-          <button type="submit" class="btn btn-success">Add Product</button>
-        </div>
+              </div>
+            </div>
 
-    </form>
-  </mat-card-content>
-  </mat-card>
+            <div class="row">
+              <button type="submit" class="btn btn-success">Add Product</button>
+            </div>
+
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-8 ">
+      <section class="soldList">
+        <table mat-table [dataSource]="productSold" class="mat-elevation-z8">
+          <!-- Position Column -->
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef> Product </th>
+            <td mat-cell *matCellDef="let element"> {{element.product.name}} </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="totalPrice">
+            <th mat-header-cell *matHeaderCellDef> Total </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalPrice | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{getTotal() | currency}}</td>
+          </ng-container>
+          <ng-container matColumnDef="taxValue">
+            <th mat-header-cell *matHeaderCellDef> Tax Value </th>
+            <td mat-cell *matCellDef="let element"> {{element.taxValue | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{getTotalTax() | currency}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky :true;"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky :true;"
+            style="background-color: rgb(204, 218, 237);"></tr>
+        </table>
+
+      </section>
+      <button mat-raised-button (click)="onSale()"> Close Sale </button>
+    </div>
+
   </div>
-  <div class="col-md-8 ">
-    <section class="soldList">
-    <table mat-table [dataSource]="productSold" class="mat-elevation-z8">
-      <!-- Position Column -->
-
-      <ng-container matColumnDef="id" >
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        <td mat-footer-cell *matFooterCellDef> </td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="product">
-        <th mat-header-cell *matHeaderCellDef> product </th>
-        <td mat-cell *matCellDef="let element"> {{element.product.name}} </td>
-        <td mat-footer-cell *matFooterCellDef> </td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> price </th>
-        <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
-        <td mat-footer-cell *matFooterCellDef> </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> quantity </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
-        <td mat-footer-cell *matFooterCellDef> </td>
-      </ng-container>
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="totalPrice">
-        <th mat-header-cell *matHeaderCellDef> total </th>
-        <td mat-cell *matCellDef="let element"> {{element.totalPrice | currency}} </td>
-        <td mat-footer-cell *matFooterCellDef>  {{getTotal() | currency}}</td>
-      </ng-container>
-      <ng-container matColumnDef="taxValue">
-        <th mat-header-cell *matHeaderCellDef> Tax </th>
-        <td mat-cell *matCellDef="let element"> {{element.taxValue | currency}} </td>
-        <td mat-footer-cell *matFooterCellDef> {{getTotalTax() | currency}} </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky :true;" ></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky :true;" style="background-color: rgb(204, 218, 237);"></tr>
-    </table>
-
-  </section>
-  <button mat-raised-button (click)="onSale()"> Save </button>
-  </div>
-
-</div>
 
 
 </div>

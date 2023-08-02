@@ -6,10 +6,7 @@ import { ProductModel } from 'src/app/models/product-model';
 import { ProductTypeControllerService } from 'src/app/controllers/product-type-controller.service';
 import { ProductType } from 'src/app/models/product-type';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
+
 
 @Component({
   selector: 'app-add-product',
@@ -17,10 +14,7 @@ interface Food {
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
-
-  productTypes:any[]=[];
-
-
+  productTypes: any[] = [];
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -28,25 +22,21 @@ export class AddProductComponent implements OnInit {
     if (file) {
       this.model.image = '/assets/p1.png';
       this.model.thumbnail = file;
-
     }
   }
 
   model = new Product();
   selected = 0;
 
-
   constructor(
-    private productController: ProductControllerService,private productTypeController: ProductTypeControllerService,
+    private productController: ProductControllerService,
+    private productTypeController: ProductTypeControllerService
   ) {}
   ngOnInit(): void {
-     this.productTypeController.getAllProductTypes().subscribe((products)=>{
-      this.productTypes=products;
-      console.log(products);
-      this.model.type_id=0;
-
-     });
-
+    this.productTypeController.getAllProductTypes().subscribe((result) => {
+      this.productTypes = result;
+      this.model.type_id = 0;
+    });
   }
 
   onUpload() {

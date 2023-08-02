@@ -8,6 +8,7 @@ import { AddProductTypeComponent } from './product-type/add-product-type/add-pro
 import { IndexProductTypeComponent } from './product-type/index-product-type/index-product-type.component';
 import { SaleProductComponent } from './product/sale-product/sale-product.component';
 import { AddSaleComponent } from './sale/add-sale/add-sale.component';
+import { IndexSaleComponent } from './sale/index-sale/index-sale.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,8 +17,8 @@ const routes: Routes = [
   {path: 'product/add', component: AddProductComponent},
   {path: 'product-type/add', component: AddProductTypeComponent},
   {path: 'product-type/index', component: IndexProductTypeComponent},
-  {path: 'product/sale', component: SaleProductComponent},
   {path: 'sale/add', component: AddSaleComponent},
+  {path: 'sale/index', component: IndexSaleComponent},
 
 ];
 

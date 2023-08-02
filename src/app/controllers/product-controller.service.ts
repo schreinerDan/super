@@ -1,18 +1,17 @@
-import { AddProductComponent } from './../product/add-product/add-product.component';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../shared/storage.service';
 import { ProductsService } from '../services/products.service';
 import { Product } from '../models/product';
-import { ProductAddedCart } from '../models/product-added-cart';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductControllerService {
 
-  constructor(public productService:ProductsService,public storage:StorageService,private router: Router) { }
+  constructor(private snackBar: MatSnackBar,public productService:ProductsService,public storage:StorageService,private router: Router) { }
 
   getAllProducts(): void{
     this.productService.getAll().subscribe((response)=>{
@@ -46,6 +45,11 @@ export class ProductControllerService {
       console.log(response);
       this.storage.message=response.message;
       this.router.navigate(['/product/index']);
+    }, (errorResponse) => {
+      // exibir mensagem snackbar
+      this.snackBar.open(errorResponse.error.message, 'ERRO', {
+        duration: 2000
+      })
     })
   }
 

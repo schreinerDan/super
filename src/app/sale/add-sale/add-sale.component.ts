@@ -1,5 +1,5 @@
 import { ProductTypeControllerService } from 'src/app/controllers/product-type-controller.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SaleControllerService } from 'src/app/controllers/sale-controller.service';
 import { Product } from 'src/app/models/product';
 import { ProductControllerService } from 'src/app/controllers/product-controller.service';
@@ -24,6 +24,7 @@ export class SaleForm {
   styleUrls: ['./add-sale.component.css'],
 })
 export class AddSaleComponent {
+  @ViewChild('item') item: any;
   public displayedColumns = [
     'id',
     'product',
@@ -54,7 +55,13 @@ export class AddSaleComponent {
         .subscribe((result) => {
           this.activeSaleItem.productType = result;
         });
+    },(errorResponse) => {
+      this.snackBar.open(errorResponse.error.message, 'ERRO', {
+        duration: 2000,
+      });
+      this.item.nativeElement.focus();
     });
+
   }
   onSubmit() {
     let productType: ProductType;
@@ -79,16 +86,16 @@ export class AddSaleComponent {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      const venda: Sale = new Sale();
-      venda.amount = result.amount;
-      venda.amount_paid = result.amount_paid;
-      venda.difference = result.difference;
-      venda.total_tax = this.getTotalTax();
-      venda.products_solds = JSON.stringify(this.productSold);
+      const sale: Sale = new Sale();
+      sale.amount = result.amount;
+      sale.amount_paid = result.amount_paid;
+      sale.difference = result.difference;
+      sale.total_tax = this.getTotalTax();
+      sale.products_solds = JSON.stringify(this.productSold);
 
-      this.saleController.addSale(venda).subscribe((response: any) => {
+      this.saleController.addSale(sale).subscribe((response: any) => {
         this.saleController.storage.message = response.message;
-        this.snackBar.open('Venda realizada com sucesso!', 'Sucesso', {
+        this.snackBar.open('Sale successfully completed!', 'Success', {
           duration: 2000,
         });
         this.startSale();

@@ -1,1 +1,83 @@
-<p>index-sale works!</p>
+<div class="container">
+  <mat-card>
+    <form>
+      Search
+      <input type="search" (ngModelChange)="searchProducts(key.value)" #key="ngModel" ngModel name="key">
+
+    </form>
+
+
+
+    <button mat-stroked-button (click)="addProduct()">Limpar</button>
+
+
+  </mat-card>
+
+
+
+
+
+  <table mat-table [dataSource]="sales" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sale_date">
+      <th mat-header-cell *matHeaderCellDef> Sale Date </th>
+      <td mat-cell *matCellDef="let product"> {{product.sale_date}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount </th>
+      <td mat-cell *matCellDef="let product"> {{product.amount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount_paid">
+      <th mat-header-cell *matHeaderCellDef> Amount Paid </th>
+      <td mat-cell *matCellDef="let product"> {{product.amount_paid}} </td>
+    </ng-container>
+
+    <!-- register_date Column -->
+    <ng-container matColumnDef="difference">
+      <th mat-header-cell *matHeaderCellDef> Difference </th>
+      <td mat-cell *matCellDef="let product"> {{product.difference}} </td>
+    </ng-container>
+
+    <!-- name Column -->
+
+
+    <!-- surname Column -->
+    <!-- name Column -->
+
+    <!-- name Column -->
+    <ng-container matColumnDef="total_tax">
+      <th mat-header-cell *matHeaderCellDef> Total Tax </th>
+      <td mat-cell *matCellDef="let product"> {{product.total_tax}} </td>
+    </ng-container>
+
+    <!-- surname Column -->
+    <ng-container matColumnDef="products_solds">
+      <th mat-header-cell *matHeaderCellDef> Products </th>
+      <td mat-cell *matCellDef="let product"> {{product.products_solds}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let product">
+        <!-- <button  class="action-link" (click)="productController.removeProduct(product.id)" >Del</button> -->
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

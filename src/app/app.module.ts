@@ -26,7 +26,6 @@ import {MatInputModule} from '@angular/material/input';
 import { UserService } from './services/user.service';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ListProductsComponent } from './product/list-products/list-products.component';
-import { ProductCardComponent } from './product/components/product-card/product-card.component';
 import { IndexProductComponent } from './product/index-product/index-product.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatOptionModule } from '@angular/material/core';
@@ -42,6 +41,9 @@ import { IndexSaleComponent } from './sale/index-sale/index-sale.component';
 import { AddSaleComponent } from './sale/add-sale/add-sale.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { ProductCardComponent } from "./product/components/product-card/product-card.component";
+import { SalesService } from './services/sales.service';
+import { ProductTypeService } from './services/product-type.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     AddProductComponent,
     ListProductsComponent,
-    ProductCardComponent,
     IndexProductComponent,
     AddProductTypeComponent,
     IndexProductTypeComponent,
@@ -59,7 +60,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SaleProductComponent,
     SalesDialogComponent,
     IndexSaleComponent,
-    AddSaleComponent
+    AddSaleComponent,
+    ProductCardComponent
+
 
 
 
@@ -87,13 +90,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatGridListModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule,
 
 
 
 
   ],
-  providers: [UserService,ProductsService],
+  providers: [UserService,ProductsService,SalesService,ProductTypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

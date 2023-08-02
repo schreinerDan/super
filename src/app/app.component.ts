@@ -8,5 +8,6 @@ import { StorageService } from './shared/storage.service';
 })
 export class AppComponent {
   title = 'super';
+  showFiller = false;
   constructor(public storage: StorageService){}
 }

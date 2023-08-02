@@ -3,6 +3,7 @@ import { ProductAddedCart } from '../../../models/product-added-cart';
 import { Component, Input, OnInit } from '@angular/core';
 import { ShoppingCartControllersService } from 'src/app/controllers/shopping-cart-controllers.service';
 
+
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',

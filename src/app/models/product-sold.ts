@@ -7,8 +7,8 @@ export class ProductSold {
   public price: any;
   public productType: ProductType;
   public quantity: number;
-  public total: number;
-  public tax: number;
+  public totalPrice: number;
+  public taxValue: number;
 
   constructor(id: any, product: Product,productType: ProductType, price: number, quantity: number, priceTotal: any) {
     this.id = id;
@@ -16,8 +16,8 @@ export class ProductSold {
     this.productType = productType;
     this.price = price;
     this.quantity = quantity;
-    this.total = priceTotal;
-    this.tax = this.total*(this.productType.percentage/100);
+    this.totalPrice = priceTotal;
+    this.taxValue = this.totalPrice*(this.productType.percentage/100);
 
 }
 

@@ -37,7 +37,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ShoppingCartListComponent } from './shopping-cart/shopping-cart-list/shopping-cart-list.component';
-
+import { SalesDialogComponent } from './sale/components/sales-dialog/sales-dialog.component';
+import { IndexSaleComponent } from './sale/index-sale/index-sale.component';
+import { AddSaleComponent } from './sale/add-sale/add-sale.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { ShoppingCartListComponent } from './shopping-cart/shopping-cart-list/sh
     AddProductTypeComponent,
     IndexProductTypeComponent,
     ShoppingCartListComponent,
-    SaleProductComponent
+    SaleProductComponent,
+    SalesDialogComponent,
+    IndexSaleComponent,
+    AddSaleComponent
 
 
 
@@ -79,7 +85,10 @@ import { ShoppingCartListComponent } from './shopping-cart/shopping-cart-list/sh
     MatSelectModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
+    MatSnackBarModule
+
 
 
 

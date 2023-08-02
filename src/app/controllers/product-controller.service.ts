@@ -30,7 +30,9 @@ export class ProductControllerService {
     return this.productService.getAll();
   }
 
-
+  getProduct(id:any):Observable<Product>{
+    return this.productService.getById(id);
+  }
 
   addProduct(data:any): void{
     this.productService.create(data).subscribe((response)=>{

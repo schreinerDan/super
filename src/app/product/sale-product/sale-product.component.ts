@@ -1,3 +1,4 @@
+import { SalesService } from './../../services/sales.service';
 import { ProductType } from 'src/app/models/product-type';
 import { ProductTypeService } from './../../services/product-type.service';
 import { ProductControllerService } from './../../controllers/product-controller.service';
@@ -7,6 +8,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Product } from 'src/app/models/product';
 import { ProductSold } from 'src/app/models/product-sold';
 import { ProductsService } from 'src/app/services/products.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SalesDialogComponent } from '../../sale/components/sales-dialog/sales-dialog.component';
+import { Sale } from 'src/app/models/sale';
 export class SaleForm {
   item:any;
   product:Product=new Product();
@@ -31,7 +35,7 @@ export class SaleProductComponent implements OnInit{
   total:any=0;
   totalTax:number=0;
 
-constructor( private productController:ProductControllerService,private productService:ProductsService,private productTypeService:ProductTypeService  ){
+constructor(   public dialog: MatDialog,private salesService:SalesService,private productController:ProductControllerService,private productService:ProductsService,private productTypeService:ProductTypeService  ){
   // this.productsSolds=[new ProductSold(1,new Product(),new ProductType(),12,1,12)];
 }
 ngOnInit(): void {
@@ -58,15 +62,40 @@ onQuantityChange(qtd:any){
 
 }
 onSubmit(){
-  let _product = new ProductSold(this.saleForm.item,this.saleForm.product,this.saleForm.productType,this.saleForm.price,this.saleForm.quantity,this.saleForm.total)
+
+  let _product = new ProductSold(this.dataSource.length+1,this.saleForm.product,this.saleForm.productType,this.saleForm.price,this.saleForm.quantity,this.saleForm.total)
 
   this.total +=this.saleForm.total;
-  this.totalTax +=_product.tax;
+  this.totalTax +=_product.taxValue;
 
 
   this.dataSource=this.dataSource.concat(_product);
   console.log(this.dataSource);
 
+
+}
+onSale(){
+  let dialogRef = this.dialog.open(SalesDialogComponent, {
+    width: '300px',
+    data: {
+      amount: this.total,
+    }
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    ;
+      const venda:Sale = new Sale();
+      venda.amount=result.amount;
+      venda.amount_paid=result.amount_paid;
+      venda.difference=result.difference;
+      venda.total_tax=this.totalTax;
+      venda.products_solds=JSON.stringify(this.dataSource);
+
+      this.salesService.create(venda).subscribe((data) => {
+        console.log(data);
+      });
+
+    }
+    );
 
 }
 
